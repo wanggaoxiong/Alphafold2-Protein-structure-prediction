@@ -27,3 +27,4 @@ Structure Module承担着把Evoformer得到的表征解码成蛋白质中每个�
 <div align=center><img src="https://p9.itc.cn/q_70/images03/20220212/3cde3ea89c054ca6a4cebe24431b2328.png"></div>
 赖氨酸的转角编码方式示例：蓝色平面（C,Cα,Cβ）确定后，根据预测的蓝色-紫色平面的二面角χ1和已知的C-C键长，Cγ-Cβ-N键角即可确定Cγ的空间坐标，重复类似步骤，可以得到Cδ,Cε, N等重原子坐标。
 
+
