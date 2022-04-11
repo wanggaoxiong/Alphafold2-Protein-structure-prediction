@@ -33,7 +33,7 @@ Structure Module承担着把Evoformer得到的表征解码成蛋白质中每个�
 赖氨酸的转角编码方式示例：蓝色平面（C,Cα,Cβ）确定后，根据预测的蓝色-紫色平面的二面角χ1和已知的C-C键长，Cγ-Cβ-N键角即可确定Cγ的空间坐标，重复类似步骤，可以得到Cδ,Cε, N等重原子坐标。
 
 ## Alphafold2安装使用
-如下将基于AMZLinux2环境安装部署Alphafold2，更多细节请参考：https://github.com/deepmind/alphafold
+如下将基于AMZLinux2环境安装部署Alphafold2，机型选择带有NVIDIA Tesla T4的GPU机型g4dn，更多细节请参考：https://github.com/deepmind/alphafold
 - 安装docker
 ```
 sudo amazon-linux-extras install docker
