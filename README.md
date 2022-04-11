@@ -1,2 +1,2 @@
-# Alphafold2-Protein-structure-prediction
-Protein structure prediction base on Alphafold2 module, build in AMZlinux2 with cloudwatch monitor
+# <center> 基于Alphafold2进行蛋白质分子结构预测 </center>
+<img src="https://pic.rmb.bdstatic.com/bjh/down/bb7118770db49c06d20a413981329f13.gif">
