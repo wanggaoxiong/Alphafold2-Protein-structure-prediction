@@ -32,4 +32,95 @@ Structure Module承担着把Evoformer得到的表征解码成蛋白质中每个�
 <div align=center><img src="https://p9.itc.cn/q_70/images03/20220212/3cde3ea89c054ca6a4cebe24431b2328.png"></div>
 赖氨酸的转角编码方式示例：蓝色平面（C,Cα,Cβ）确定后，根据预测的蓝色-紫色平面的二面角χ1和已知的C-C键长，Cγ-Cβ-N键角即可确定Cγ的空间坐标，重复类似步骤，可以得到Cδ,Cε, N等重原子坐标。
 
+## Alphafold2安装使用
+如下将基于AMZLinux2环境安装部署Alphafold2，更多细节请参考：https://github.com/deepmind/alphafold
+- 安装docker
+```
+sudo amazon-linux-extras install docker
+sudo systemctl --now enable docker
+sudo docker run --rm hello-world
+docker –version
+sudo chkconfig docker on
+docker pull centos
+sudo docker pull centos
+sudo docker images centos
+sudo docker run -i -t centos /bin/bash
+exit
+```
+- 配置docker非root用户执行
+参考链接：https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+```
+- 安装NVIDA驱动（并给ec2相关role）
+参考链接：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-nvidia-driver.html#nvidia-driver-instance-type
+```
+sudo yum update –y
+sudo reboot
+sudo yum install -y gcc kernel-devel-$(uname -r)
+aws s3 cp --recursive s3://ec2-linux-nvidia-drivers/latest/ .
+aws s3 ls --recursive s3://ec2-linux-nvidia-drivers/
+chmod +x NVIDIA-Linux-x86_64*.run
+sudo /bin/sh ./NVIDIA-Linux-x86_64*.run
+If you are using Amazon Linux 2 with kernel version 5.10, use the following command to install the GRID driver.
+sudo CC=/usr/bin/gcc10-cc ./NVIDIA-Linux-x86_64*.run
+sudo reboot
+```
+- 安装配置和测试NVIDIA Container Toolkit
+参考链接：https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+```
+sudo yum install nvidia-container-toolkit –y
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)    && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
+sudo yum clean expire-cache
+sudo systemctl restart docker
+sudo systemctl enable docker
+(service docker status)
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+
+```
+- 安装aria2c和rsync工具
+```
+sudo amazon-linux-extras install epel
+yum install aria2 –y
+```
+- 下载alphafold2数据库
+```
+  yum install git –y
+git clone https://github.com/deepmind/alphafold.git
+进入script目录通过脚本cp所有数据
+scripts/download_all_data.sh <DOWNLOAD_DIR>
+然后对每个文件进行解压，目录结构如下：
+$DOWNLOAD_DIR/                             # Total: ~ 2.2 TB (download: 438 GB)
+    bfd/                                   # ~ 1.7 TB (download: 271.6 GB)
+        # 6 files.
+    mgnify/                                # ~ 64 GB (download: 32.9 GB)
+        mgy_clusters_2018_12.fa
+    params/                                # ~ 3.5 GB (download: 3.5 GB)
+        # 5 CASP14 models,
+        # 5 pTM models,
+        # 5 AlphaFold-Multimer models,
+        # LICENSE,
+        # = 16 files.
+    pdb70/                                 # ~ 56 GB (download: 19.5 GB)
+        # 9 files.
+    pdb_mmcif/                             # ~ 206 GB (download: 46 GB)
+        mmcif_files/
+            # About 180,000 .cif files.
+        obsolete.dat
+    pdb_seqres/                            # ~ 0.2 GB (download: 0.2 GB)
+        pdb_seqres.txt
+    small_bfd/                             # ~ 17 GB (download: 9.6 GB)
+        bfd-first_non_consensus_sequences.fasta
+    uniclust30/                            # ~ 86 GB (download: 24.9 GB)
+        uniclust30_2018_08/
+            # 13 files.
+    uniprot/                               # ~ 98.3 GB (download: 49 GB)
+        uniprot.fasta
+    uniref90/                              # ~ 58 GB (download: 29.7 GB)
+        uniref90.fasta
+
+```
 
