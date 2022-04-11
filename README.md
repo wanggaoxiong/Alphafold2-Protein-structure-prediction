@@ -48,6 +48,7 @@ sudo docker run -i -t centos /bin/bash
 exit
 ```
 - 配置docker非root用户执行
+
 参考链接：https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 ```
 sudo groupadd docker
@@ -56,6 +57,7 @@ newgrp docker
 docker run hello-world
 ```
 - 安装NVIDA驱动（并给ec2相关role）
+
 参考链接：https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-nvidia-driver.html#nvidia-driver-instance-type
 ```
 sudo yum update –y
@@ -70,6 +72,7 @@ sudo CC=/usr/bin/gcc10-cc ./NVIDIA-Linux-x86_64*.run
 sudo reboot
 ```
 - 安装配置和测试NVIDIA Container Toolkit
+
 参考链接：https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
 ```
 sudo yum install nvidia-container-toolkit –y
@@ -88,8 +91,9 @@ yum install aria2 –y
 ```
 - 下载alphafold2数据库
 ```
-  yum install git –y
+yum install git –y
 git clone https://github.com/deepmind/alphafold.git
+```
 进入script目录通过脚本cp所有数据
 scripts/download_all_data.sh <DOWNLOAD_DIR>
 然后对每个文件进行解压，目录结构如下：
@@ -122,5 +126,5 @@ $DOWNLOAD_DIR/                             # Total: ~ 2.2 TB (download: 438 GB)
     uniref90/                              # ~ 58 GB (download: 29.7 GB)
         uniref90.fasta
 
-```
+
 
