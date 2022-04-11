@@ -94,6 +94,7 @@ yum install aria2 –y
 yum install git –y
 git clone https://github.com/deepmind/alphafold.git
 ```
+```
 进入script目录通过脚本cp所有数据
 scripts/download_all_data.sh <DOWNLOAD_DIR>
 然后对每个文件进行解压，目录结构如下：
@@ -125,6 +126,6 @@ $DOWNLOAD_DIR/                             # Total: ~ 2.2 TB (download: 438 GB)
         uniprot.fasta
     uniref90/                              # ~ 58 GB (download: 29.7 GB)
         uniref90.fasta
-
+```
 
 
