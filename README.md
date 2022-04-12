@@ -1,4 +1,4 @@
-# <center> 基于Alphafold2进行蛋白质分子结构预测 </center>
+# <center> 基于Alphafold2加速药物研发创新 </center>
 医药行业一直以来都是一个相对封闭的行业，专业性特别强，相关领域知识与其他行业不共通，让医药行业与外界之间始终隔着一道墙。如今这堵墙正在因为数字化技术的介入逐渐瓦解。越来越多人工智能企业，开始与药物研发者们合作，将人工智能技术应用于新药研发的各个环节中，加速新药研发流程。
 <div align=center><img src="https://pic.rmb.bdstatic.com/bjh/down/bb7118770db49c06d20a413981329f13.gif" width="780"></div>
 
