@@ -1,4 +1,4 @@
-# <center> 基于Alphafold2加速药物研发创新 </center>
+# <center> 基于AWS使用Alphafold2加速药物研发创新 </center>
 医药行业因为专业属性特别强，相关领域知识与其他行业难以互通，使得医药行业与外界之间始终隔着一道墙。如今这堵墙正随着数字化技术的介入逐渐瓦解。越来越多人工智能企业，开始与药物研发者们合作，将人工智能技术应用于新药研发的各个环节中，加速新药研发的各个环节。
 <div align=center><img src="https://pic.rmb.bdstatic.com/bjh/down/bb7118770db49c06d20a413981329f13.gif" width="780"></div>
 
