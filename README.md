@@ -1,16 +1,16 @@
 # <center> 基于Alphafold2进行蛋白质分子结构预测 </center>
 医药行业一直以来都是一个相对封闭的行业，专业性特别强，相关领域知识与其他行业不共通，让医药行业与外界之间始终隔着一道墙。如今这堵墙正在因为数字化技术的介入逐渐瓦解。越来越多人工智能企业，开始与药物研发者们合作，将人工智能技术应用于新药研发的各个环节中，加速新药研发流程。
-<img src="https://pic.rmb.bdstatic.com/bjh/down/bb7118770db49c06d20a413981329f13.gif">
+<div align=center><img src="https://pic.rmb.bdstatic.com/bjh/down/bb7118770db49c06d20a413981329f13.gif" width="650"></div>
 
 ## AI+为医药行业带来的价值
 医药研发是制药企业价值和生命力的核心所在，但新药研发周期长、成功率低和研发费用高一直是该领域内的三大困境。以深度学习为代表的人工智能技术，凭借其强大的关系发现能力和计算能力加速医药研发流程。
 新药研发主要包括药物发现、临床前研究、临床研究以及审批与上市四个阶段。
-<div align=center><img src="https://p3.itc.cn/q_70/images03/20201024/a09ad4f89db94fd4aa7ac5c5190239c3.png"></div>
+<div align=center><img src="https://p3.itc.cn/q_70/images03/20201024/a09ad4f89db94fd4aa7ac5c5190239c3.png" width="650"></div>
 药物发现阶段主要涉及疾病选择、靶点发现和化合物合成。而临床前研究阶段则以化合物筛选、晶型预测、化合物验证为主，包括药物的构效关系分析、稳定性分析、安全性评价和ADMET分析等。
 AI主要应用其强大的关系发现能力和计算能力助力新药研发。在计算方面，AI具备的强大认知计算能力，可以对候选化合物进行虚拟筛选，更快的筛选出具有较高活性的化合物，为后期临床试验做准备。
 
 ### AI+新药主要应用场景：
-<div align=center><img src="http://p5.itc.cn/q_70/images03/20201024/81466e7669014505b2e681316cf376c8.png"></div>
+<div align=center><img src="http://p5.itc.cn/q_70/images03/20201024/81466e7669014505b2e681316cf376c8.png" width="650"></div>
 
 ## AlphaFold2的诞生
 2018年的CASP 13（国际权威的蛋白质结构预测竞赛，每2年举办一次）上，谷歌DeepMind团队的AlphaFold拿下了70多分，打败众多研究团队，取得人工组第一，在该领域取得了里程碑式的进展。在2020年的CASP 14上，谷歌DeepMind团队的AlphaFold2以惊人的92.4分登顶第一[1]，这一结果也被认为是基本解决了“困扰了生物学家50年”的问题，获得重大突破。92.4分，指的是对竞赛目标蛋白的预测精度GDT_TS分数达到92.4，一般认为该分数超过90分，基本可以替代实验方式啦，这也意味着AlphaFold2预测的结果与实验得到的蛋白质结构基本一致。
@@ -18,7 +18,7 @@ AI主要应用其强大的关系发现能力和计算能力助力新药研发。
 
 ## AlphaFold2算法设计思想
 AlphaFold2通过独特的神经网络和训练过程设计，第一次端到端地学习蛋白质结构。整个算法框架通过协同学习蛋白质的多序列比对（MSA）和氨基酸对（pairwise）的表征，将蛋白质序列的进化信息、蛋白质结构的物理和几何约束信息结合到深度学习网络中。我们将从数据预处理、Evoformer和Structure Module三个模块分析AlphaFold2算法的设计思想。
-<div align=center><img src="https://p2.itc.cn/q_70/images03/20220212/2c496a431965421f8636cabcef148792.png"></div>
+<div align=center><img src="https://p2.itc.cn/q_70/images03/20220212/2c496a431965421f8636cabcef148792.png" width="850"></div>
 
 - 数据处理
 
@@ -29,7 +29,7 @@ Evoformer网络的设计动机是想利用Self-Attention机制学习蛋白质的
 - Stucture Module
 
 Structure Module承担着把Evoformer得到的表征解码成蛋白质中每个重原子(C,N,O,S)坐标的任务。为了简化从神经网络预测值到原子坐标的转换，AlphaFold2结合蛋白质中20类氨基酸的结构特性，将重原子分成不同二面角转角决定的组，这样就可以根据给定的起始位置，利用二面角和氨基酸已知的键长键角信息解码出原子坐标。这种结构编码方法相比直接预测坐标(x,y,z)大大降低了神经网络的预测空间，使得端到端结构学习成为可能。
-<div align=center><img src="https://p9.itc.cn/q_70/images03/20220212/3cde3ea89c054ca6a4cebe24431b2328.png"></div>
+<div align=center><img src="https://p9.itc.cn/q_70/images03/20220212/3cde3ea89c054ca6a4cebe24431b2328.png" width="400"></div>
 赖氨酸的转角编码方式示例：蓝色平面（C,Cα,Cβ）确定后，根据预测的蓝色-紫色平面的二面角χ1和已知的C-C键长，Cγ-Cβ-N键角即可确定Cγ的空间坐标，重复类似步骤，可以得到Cδ,Cε, N等重原子坐标。
 
 ## Alphafold2安装使用
